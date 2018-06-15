@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: 123456
+  socket: /var/run/mysqld/mysqld.sock
+
+development:
+  <<: *default
+  database: pr1801-daily-report-system_development
+
+
+test:
+  <<: *default
+  database: pr1801-daily-report-system_test
+
+
+production:
+  <<: *default
+  database: pr1801-daily-report-system_production
+  username: pr1801-daily-report-system
+  password: <%= ENV['PR1801-DAILY-REPORT-SYSTEM_DATABASE_PASSWORD'] %>
