@@ -31,6 +31,9 @@ class UsersController < ApplicationController
   def edit
     add_breadcrumb "My Profile", :user_path
     @user = User.find(params[:id])
+    if @user.save
+      redirect_to show_user_path
+    end
   end
 
   def update
