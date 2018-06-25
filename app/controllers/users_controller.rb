@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
-      flash[:success] = t("notifi")
+      flash[:success] = t(:notifi)
       redirect_to @user
     else
       render 'new'
