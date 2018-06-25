@@ -1,9 +1,9 @@
 <div id="content">
   <%= render 'layouts/toggle_sidebar' %>
   <div class="card-deck">
-   <div class="card">
+    <div class="card">
       <div class="card-body">
-        <h5 class="card-title">Profile</h5>
+        <h5 class="card-title"><%= t("Profile") %></h5>
         <p class="card-text">
           <div class="row">
             <div class="col-md-3 col-lg-3">
@@ -12,24 +12,24 @@
                 <table class="table table-user-information">
                   <tbody>
                     <tr>
-                      <td>Name</td>
+                      <td><%= t("name") %></td>
                       <td><%= @user.name %></td>
                     </tr>
                     <tr>
-                      <td>Email</td>
+                      <td><%= t("Email") %></td>
                       <td><%= @user.email %></td>
                     </tr>
                     <tr>
-                      <td>Department</td>
-                      <td>Department</td>
+                      <td><%= t("Department") %></td>
+                      <td><%= t("Department") %></td>
                     </tr>
                     <tr>
-                      <td>Divisition</td>
-                      <td>Department</td>
+                      <td><%= t("Division") %></td>
+                      <td><%= t("Division") %></td>
                     </tr>
                     <tr>
-                      <td>Role</td>
-                      <td>Department</td>
+                      <td><%= t("Role") %></td>
+                      <td><%= t("Role") %></td>
                     </tr>
                   </tbody>
                 </table>
@@ -39,13 +39,13 @@
         </p>
       </div>
       <div class="card-footer">
-        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-envelope"></i></a>
+        <a data-original-title=<%= t("BroadMessage") %> data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-envelope"></i></a>
         <span class="pull-right">
-          <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
-          <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a>
+          <a href="edit.html" data-original-title=<%= t("Edit") %> data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></a>
+          <a data-original-title=<%= t("Remove") %> data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a>
         </span>
       </div>
-   </div>
+    </div>
   </div>
   <div class="card">
     <img class="card-img-top" src="..." alt="Card image cap">
@@ -58,4 +58,3 @@
     </div>
   </div>
 </div>
-

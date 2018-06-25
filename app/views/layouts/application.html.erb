@@ -3,28 +3,26 @@
   <head>
     <title><%= yield(:title) %></title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <%= render 'layouts/shim' %>
+    <%= render 'layouts/shim' %>
   </head>
-
   <body>
     <% if logged_in? %>
-      <%= render 'layouts/header1' %>
-      <div class="container">
-        <%= yield %>
-      </div>
-      <%= render 'layouts/footer1' %>
+    <%= render 'layouts/header1' %>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer1' %>
     <% elsif %>
-      <%= render 'layouts/header' %>
-      <div class="container">
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>"><%= message %></div>
-        <% end %>
-        <%= yield %>
-      </div>
-      <%= render 'layouts/footer' %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+    <%= render 'layouts/footer' %>
     <% end %>
   </body>
 </html>
