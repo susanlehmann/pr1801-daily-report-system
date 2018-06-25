@@ -30,4 +30,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  Home: Home
+  notifi: Welcome to Daily Report Systems
+  t-pre: A plan to fit every need
