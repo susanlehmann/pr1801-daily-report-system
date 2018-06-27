@@ -3,16 +3,17 @@
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
       <%= form_for(@user)  do |f| %>
-      <%= f.label t(:name) %><br>
-      <%= f.text_field :name %><br>
-      <%= f.label t(:email) %><br>
-      <%= f.email_field :email %><br>
-      <%= f.label t(:password) %><br>
-      <%= f.password_field :password %><br>
-      <%= f.label :password_confirmation, t("PassConfirm")  %><br>
-      <%= f .password_field :password_confirmation %><br>
-      <%= f.submit t("Signup"), class: "btn btn-primary" ,:style => 'margin-top: 20px;'%>
-      <%= link_to t("Signin"), '#', class: "btn btn-success",:style => 'margin-top: 20px;' %>
+        <%= render 'shared/error_messages', object: @user %>
+        <%= f.label t(:name) %><br>
+        <%= f.text_field :name %><br>
+        <%= f.label t(:email) %><br>
+        <%= f.email_field :email %><br>
+        <%= f.label t(:password) %><br>
+        <%= f.password_field :password %><br>
+        <%= f.label :password_confirmation, t("PassConfirm")  %><br>
+        <%= f .password_field :password_confirmation %><br>
+        <%= f.submit t("Signup"), class: "btn btn-primary bt1" %>
+        <%= link_to t("Signin"), '#', class: "btn btn-success bt1" %>
       <% end %>
     </div>
   </div>

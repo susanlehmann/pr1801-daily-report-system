@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
  gem 'jquery-ui-rails'
  gem 'will_paginate'
  gem "breadcrumbs_on_rails"
+ gem 'config'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

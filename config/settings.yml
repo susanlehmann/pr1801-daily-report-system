@@ -1,0 +1,6 @@
+password:
+  minimum: 8
+name:
+  maximum: 50
+email:
+  maximum: 255
