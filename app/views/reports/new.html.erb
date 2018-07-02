@@ -1,0 +1,27 @@
+<%= provide(:title, t("report")) %>
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <% if logged_in? %>
+  <%= form_for @report do |f| %>
+  <%#= render "shared/error_messages", object: f.object %>
+  <div class="card-deck">
+    <div class="card-body">
+      <h5 class="card-title"><%= t("report") %></h5>
+      <p class="card-text">
+        <div class="row">
+          <div class="col-md-3 col-lg-3">
+            <div class="col-md-9 col-lg-9">
+              <%= f.text_area :content, size: "30x10", placeholder: t("create_report") %>
+              <%= f.submit t("create"), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </p>
+      </div>
+      <% end %>
+    </div>
+    <% else %>
+    <div><h1><%= t("nothing") %></h1></div>
+    <% end %>
+    <div class="col-sm-2 sidenav">
+      <div><%= render "reports/reports" %></div>
+    </div>

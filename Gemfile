@@ -40,6 +40,10 @@ gem "jbuilder", "~> 2.5"
  gem "config"
  gem "carrierwave", "~>1.0"
  gem "mini_magick"
+ gem "figaro"
+ gem "omniauth"
+ gem "omniauth-facebook"
+ gem "omniauth-google-oauth2"
  gem "faker"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
@@ -50,6 +54,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem "capybara", "~> 2.13"
   gem "selenium-webdriver"
+  gem "dotenv-rails"
 end
 
 group :development do

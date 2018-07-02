@@ -73,8 +73,8 @@
               </li>
               <li class="dropdown-divider"></li>
               <li>
-                <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value=<%=t("SignInGoogle")%>>
-                <input class="btn btn-primary btn-block" type="button" id="sign-in-facebook" value=<%=t("SignInFacebook")%>>
+                <%= link_to t("SignInGoogle"), "/auth/google_oauth2", class: "btn btn-block btn-social btn-google" %>
+                <%= link_to t("SignInFacebook"), "/auth/facebook", class: "btn btn-block btn-social btn-facebook" %>
               </li>
             </li>
           </ul>
