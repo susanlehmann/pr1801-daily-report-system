@@ -7,7 +7,7 @@ class User < ApplicationRecord
                                   dependent: :destroy
   has_many :following, through: :active_relationships, source: :followed
   has_many :followers, through: :passive_relationships, source: :follower
-  #has_many :user_skills
+  has_many :user_skills
   has_many :skills, through: :user_skills
   has_many :user_parts
   has_many :requests
@@ -22,6 +22,7 @@ class User < ApplicationRecord
          uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: Settings.password.minimum }, allow_nil: true
+  enum role: {normal: 0, admin: 1, manager: 2}
   # Return the hash digest of the given string
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
@@ -46,4 +47,5 @@ class User < ApplicationRecord
   def authenticated?(remember_token)
         BCrypt::Password.new(remember_digest).is_password?(remember_token)
   end
+
 end
