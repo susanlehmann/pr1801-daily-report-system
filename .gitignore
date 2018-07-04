@@ -14,6 +14,7 @@ pickle-email-*.html
 /yarn-error.log
 /test/*
 /public/uploads/
+.env
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
 config/master.key
@@ -54,3 +55,7 @@ config/database.yml
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+
+# Ignore application configuration
+config/application.yml
+config/secrets.yml

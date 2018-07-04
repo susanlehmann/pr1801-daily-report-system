@@ -40,3 +40,9 @@ jp:
   Language: "言語"
   fc: "フォームが含まれています"
   error: "エラー"
+  create: "作成に成功しました"
+  user_error: "無効なメール/パスワードの組み合わせ"
+  create_report: "新しいレポートを作成する"
+  create: "作成する"
+  nothing: "ここには何も見えません"
+

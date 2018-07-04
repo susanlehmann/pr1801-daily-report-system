@@ -40,3 +40,8 @@ en:
   Language: "Language"
   fc: "The form contains"
   error: "error"
+  create: "Successfully Created"
+  user_error: "Invalid Email/Password Combination"
+  create_report: "Compose new Report"
+  create: "Create"
+  nothing: "Nothing to see here"
