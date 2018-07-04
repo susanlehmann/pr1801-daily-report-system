@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
+  layout "application"
   add_breadcrumb "Dashboard", :current_user
   before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_action :correct_user, only: [:edit, :update]
-  before_action :admin_user, only: :destroy
+  before_action :verify_admin, only: [:destroy]
   before_action :find_user, only: [:edit, :update, :show]
   def index
   end
@@ -16,7 +17,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       log_in @user
       flash[:success] = t(:notifi)
@@ -65,4 +65,9 @@ class UsersController < ApplicationController
       redirect_to current_user
     end
   end
+
+  def verify_admin
+    redirect_to current_user unless !current_user.admin?
+  end
+
 end

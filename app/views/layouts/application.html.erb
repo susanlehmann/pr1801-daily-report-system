@@ -8,7 +8,7 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
-    <% if logged_in? %>
+    <% if logged_in? && !current_user.admin?%>
     <%= render 'layouts/header1' %>
     <div class="container">
       <%= yield %>

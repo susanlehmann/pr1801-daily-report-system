@@ -40,6 +40,7 @@ gem "jbuilder", "~> 2.5"
  gem "config"
  gem "carrierwave", "~>1.0"
  gem "mini_magick"
+ gem "faker"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 
