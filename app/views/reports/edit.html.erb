@@ -1,0 +1,13 @@
+<%= provide(:title, t("edit_report")) %>
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <h1><%= t("edit_report") %></h1>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@report) do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label t(:content) %>
+    <%= f.text_area :content, size: Settings.content.size %>
+    <%= f.submit t("Save"), class: "btn btn-primary bt1" %>
+    <% end %>
+  </div>
+</div>

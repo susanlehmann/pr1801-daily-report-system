@@ -1,23 +1,33 @@
 <nav id="sidebar">
-    <div class="sidebar-header">
-        <h3>DRS</h3>
-    </div>
-    <ul class="list-unstyled components">
-        <p>Menu</p>
-        <li class="active">
-            <a href="" >Dashboard</a>
+  <div class="sidebar-header">
+    <h3>DRS</h3>
+  </div>
+  <ul class="list-unstyled components">
+    <p>Menu</p>
+    <li class="active">
+      <%= link_to t("dashboard"), reports_path %>
+    </li>
+    <li>
+      <%= link_to t("user"), user_path(current_user) %>
+    </li>
+    <li>
+      <a href="#">Notification</a>
+    </li>
+    <% if !current_user.manager? %>
+    <li>
+      <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Report</a>
+      <ul class="collapse list-unstyled" id="pageSubmenu">
+        <li>
+          <%= link_to t("new_report"), new_report_path %>
         </li>
         <li>
-            <a href="">User</a>
+          <a href="#">Send Report</a>
         </li>
-        <li>
-            <a href="#">Notification</a>
-        </li>
-        <li>
-            <a href="#">Report>
-            </li>
-            <li>
-                <%= link_to t("Signout"), logout_path, method: :delete %>
-            </li>
-        </ul>
-    </nav>
+      </ul>
+    </li>
+    <% end %>
+    <li>
+      <%= link_to t("Signout"), logout_path, method: :delete %>
+    </li>
+  </ul>
+</nav>

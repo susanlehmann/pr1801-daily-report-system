@@ -195,3 +195,29 @@ a.article, a.article:hover {
       display: none;
   }
 }
+
+/* ---------------------------------------------------
+  Report
+----------------------------------------------------- */
+.user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp {
+    color: gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .avatars {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }

@@ -1,0 +1,38 @@
+<%= provide(:title, t("report")) %>
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <div class="card-deck">
+    <div class="card">
+      <div class="card_title">
+        <span class="avatars"><%= image_tag @report.user.avatars.thumb.url if @report.user.avatars? %>
+          <span class="user"><%= @report.user.name %></span>
+        </span>
+      </div>
+      <hr>
+      <div class="card-text">
+        <%= @report.content %>
+        <hr>
+        <mark class="pull-right"><%= @report.status %></mark>
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <% if current_user.manager? && @report.pending? %>
+      <span class="pull-right">
+        <%= link_to t("reject_report"), reject_report_path, method: :post, class: "btn btn-sm btn-danger fa fa-ban" %>
+      </span>
+      <span class="pull-right">
+        <%= link_to t("approve_report"), approve_report_path, method: :post, class: "btn btn-sm btn-success fa fa-check" %>
+      </span>
+    <% else %>
+    <% unless @report.approved? && current_user.manager? %>
+      <% if @report.correct_user? current_user %>
+        <span class="pull-right">
+          <%= link_to t("edit_report"), edit_report_path, class: "btn btn-sm btn-warning fa fa-edit" %>
+        </span>
+      <% end %>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+</div>
