@@ -1,0 +1,35 @@
+<div class="card-deck">
+  <div class="card">
+    <div class="card-body">
+      <div class="card-title"><span class="avatars"><%= image_tag report.user.avatars.thumb.url if report.user.avatars? %></span></div>
+      <p class="card-text">
+        <div class="row">
+          <li class>
+            <span class="user"><%= link_to report.user.name, report.user %></span>
+            <% if report.content.present? %>
+            <span class="content"><%= truncate(report.content, length: Settings.truncate.length) %></span>
+            <% end %>
+            <span class="timestamp">
+              <%= t("posted") %> <%= time_ago_in_words(report.created_at) %> <%= t("ago") %>.
+            </span>
+            <span class="timestamp">
+              <%= t("updated") %> <%= time_ago_in_words(report.updated_at) %> <%= t("ago") %>.
+            </span>
+            <span class="timestamp">
+              <mark><%= report.status %></mark>
+            </span>
+          </li>
+        </div>
+      </p>
+      <br>
+      <div class="card-footer">
+        <% if !current_user.manager? && current_user?(report.user) %>
+        <%= link_to t("delete"), report, method: :delete, data: { confirm: t("confirm")}, class: "btn btn-sm btn-danger fa fa-remove pull-right" %>
+        <% end %>
+        <span>
+          <%= link_to "More Details", report, class: "btn btn-sm btn-primary fa fa-info pull-right" %>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @reports = @user.reports.load_data
   end
 
   def new
@@ -22,7 +23,7 @@ class UsersController < ApplicationController
       flash[:success] = t(:notifi)
       redirect_to @user
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -32,10 +33,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update_attributes(user_params)
-      flash[:success] = 'Profile updated'
+      flash[:success] = t("update_user")
       redirect_to @user
     elsif
-      render 'edit'
+      render :edit
     end
   end
 
@@ -44,13 +45,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
      :password_confirmation, :avatars)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "please log in."
-      redirect_to login_path
-    end
   end
 
   def correct_user
@@ -70,4 +64,7 @@ class UsersController < ApplicationController
     redirect_to current_user unless !current_user.admin?
   end
 
+  def manager_user
+    redirect_to current_user unless current_user.manager?
+  end
 end

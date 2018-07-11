@@ -1,5 +1,6 @@
+<%= provide(:title, @user.name) %>
 <% if !current_user.admin? %>
- <div id="content">
+<div id="content">
   <%= render 'layouts/toggle_sidebar' %>
   <div class="card-deck">
     <div class="card">
@@ -30,7 +31,7 @@
                     </tr>
                     <tr>
                       <td><%= t("Role") %></td>
-                      <td><%= t("Role") %></td>
+                      <td><%= @user.role %></td>
                     </tr>
                   </tbody>
                 </table>
@@ -43,7 +44,7 @@
         <a data-original-title=<%= t("BroadMessage") %> data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="fa fa-envelope"></i></a>
         <span class="pull-right">
           <%= link_to edit_user_path(current_user), data: {toggle: "tooltip"}, class: "btn btn-sm btn-warning" do %>
-            <i class="fa fa-edit"></i>
+          <i class="fa fa-edit"></i>
           <% end %>
           <a data-original-title=<%= t("Remove") %> data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></a>
         </span>
@@ -59,7 +60,7 @@
       <small class="text-muted">Last updated 3 mins ago</small>
     </div>
   </div>
- </div>
+</div>
 <% elsif %>
-  <%= render "admin" %>
+<%= render "admin" %>
 <% end %>

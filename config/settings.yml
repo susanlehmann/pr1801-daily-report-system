@@ -4,3 +4,7 @@ name:
   maximum: 50
 email:
   maximum: 255
+truncate:
+  length: 8
+content:
+  size: "60x10"
