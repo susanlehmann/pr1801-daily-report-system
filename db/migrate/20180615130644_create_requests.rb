@@ -7,6 +7,8 @@ class CreateRequests < ActiveRecord::Migration[5.1]
       t.datetime :created_at
       t.datetime :updated_at
       t.text :reason
+      t.datetime :check_in
+      t.datetime  :check_out
 
       t.timestamps
     end

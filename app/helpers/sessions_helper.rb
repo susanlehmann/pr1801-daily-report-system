@@ -10,7 +10,7 @@ module SessionsHelper
   end
 
   def current_user?(user)
-    user = current_user
+    user == current_user
   end
 
   def current_user
@@ -41,6 +41,12 @@ module SessionsHelper
     @current_user = nil
   end
 
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "please log in."
+      redirect_to login_path
+    end
+  end
   def redirect_back_or(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)

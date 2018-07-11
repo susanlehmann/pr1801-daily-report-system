@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  layout "application"
+  layout "user"
   add_breadcrumb "Dashboard", :current_user
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
+  before_action :logged_in_user, only: [:index, :edit, :update, :show]
   before_action :correct_user, only: [:edit, :update]
   before_action :verify_admin, only: [:destroy]
   before_action :find_user, only: [:edit, :update, :show]
@@ -44,13 +44,6 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email, :password,
      :password_confirmation, :avatars)
-  end
-
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "please log in."
-      redirect_to login_path
-    end
   end
 
   def correct_user

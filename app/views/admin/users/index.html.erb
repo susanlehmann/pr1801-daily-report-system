@@ -1,0 +1,31 @@
+<% provide :title, t(".users") %>
+<div class="container margin-header margin-footer">
+  <h1 class="title"><%= t ".users" %></h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><%= t "avatars" %></th>
+        <th scope="col"><%= t "name" %></th>
+        <% if current_user.admin? %>
+          <th><%= t "delete" %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= image_tag user.avatars, class: "thumbnail" %></td>
+          <td><%= user.name %></td>
+          <% if current_user.admin? && !current_user?(user) %>
+            <td class="text-center bg-warning">
+              <%= link_to t(".delete"), admin_user_path(user), method: :delete,data: {confirm: t(".you_sure")} %>
+            </td>
+          <% end %>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+  <div"><%= will_paginate %></div>
+</div>

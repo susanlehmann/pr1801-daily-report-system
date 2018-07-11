@@ -8,13 +8,15 @@
     <%= render 'layouts/shim' %>
   </head>
   <body>
-      <%= render 'layouts/header' %>
+    <% if logged_in? && !current_user.admin?%>
+      <%= render 'layouts/header1' %>
       <div class="container">
-      <% flash.each do |message_type, message| %>
+        <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>
       <% end %>
         <%= yield %>
       </div>
-      <%= render 'layouts/footer' %>
+      <%= render 'layouts/footer1' %>
+    <% end %>
   </body>
 </html>

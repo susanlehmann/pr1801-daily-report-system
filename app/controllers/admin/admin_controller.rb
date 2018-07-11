@@ -1,6 +1,8 @@
 class Admin::AdminController < ApplicationController
   layout "admin"
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
   before_action :authorized?
+
 
   def index
   end

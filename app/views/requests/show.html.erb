@@ -1,0 +1,17 @@
+<div id="content">
+  <%= render 'layouts/toggle_sidebar' %>
+  <div class="card">
+    <div class="card-header">Leave request</div>
+    <div class="card-body">
+      <% if current_user.manager? %>
+        <%= @request.check_in %>
+        <%= @request.check_out %>
+        <%= @request.reason %>
+        <% if @request.can_verify? %>
+          <%= link_to "accept_off", verify_request_path, method: :post, class: 'btn btn-success', data: { confirm: "accepted?"} %>
+          <%= link_to 'Refuse_leave', reject_request_path, method: :post, class: 'btn btn-danger', data: { confirm: "refuse leave"} %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

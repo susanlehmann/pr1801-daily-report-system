@@ -1,0 +1,15 @@
+<div class="card">
+    <div class="card-header">Detail User</div>
+    <div class="card-body">
+      <% if current_user.admin? %>
+        <%= @user.name %>
+        <%= @user.email %>
+        <%= t("Department") %>
+        <%= t("Role") %>
+        <div class="text-center bg-warning">
+            <%= link_to t(".delete"), admin_user_path, method: :delete,
+              data: {confirm: t(".you_sure")} %>
+          </div>
+      <% end %>
+    </div>
+  </div>

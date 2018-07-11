@@ -3,21 +3,27 @@
         <h3>DRS</h3>
     </div>
     <ul class="list-unstyled components">
-        <p>Menu</p>
-        <li class="active">
-            <a href="" >Dashboard</a>
-        </li>
-        <li>
-            <a href="">User</a>
-        </li>
-        <li>
-            <a href="#">Notification</a>
-        </li>
-        <li>
-            <a href="#">Report>
-            </li>
-            <li>
-                <%= link_to t("Signout"), logout_path, method: :delete %>
-            </li>
-        </ul>
-    </nav>
+    <p>Menu</p>
+    <li class="active">
+        <a href="" >Dashboard</a>
+    </li>
+    <li>
+        <a href="">User</a>
+    </li>
+    <li>
+        <%= link_to "Skill Manager", new_user_skill_path %>
+    </li>
+    <li>
+        <a href="#">Notification</a>
+    </li>
+    <li>
+        <a href="#">Report</a>
+    </li>
+    <li>
+        <%= link_to "Request_day", new_request_path %>
+    </li>
+    <li>
+        <%= link_to t("Signout"), logout_path, method: :delete %>
+    </li>
+    </ul>
+</nav>

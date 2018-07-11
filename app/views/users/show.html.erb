@@ -1,4 +1,4 @@
-<% if !current_user.admin? %>
+
  <div id="content">
   <%= render 'layouts/toggle_sidebar' %>
   <div class="card-deck">
@@ -60,6 +60,4 @@
     </div>
   </div>
  </div>
-<% elsif %>
-  <%= render "admin" %>
-<% end %>
+

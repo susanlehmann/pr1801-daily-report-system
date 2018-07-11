@@ -14,13 +14,23 @@
 //= require popper
 //= require jquery_ujs
 //= require bootstrap
+//= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function () {
+$(document).on("turbolinks:load",function() {
   $('#sidebarCollapse').on('click', function () {
       $('#sidebar, #content').toggleClass('active');
       $('.collapse.in').toggleClass('in');
       $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+  });
+});
+$(document).ready(function() {
+  return $('.datepicker').datetimepicker({
+    autoclose: true,
+    todayBtn: true,
+    minView: 'day',
+    autoclose: true,
+    format: 'yyyy-mm-dd hh:00'
   });
 });

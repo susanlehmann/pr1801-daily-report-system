@@ -1,0 +1,28 @@
+<% provide(:title, t("All")) %>
+<div id="content">
+  <%= render 'layouts/toggle_sidebar' %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Employment name</th>
+        <th scope="col">Leave Type</th>
+        <th scope="col">Check_in</th>
+        <th scope="col">Check_out</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <% @requests.each do |f| %>
+      <tbody>
+        <tr>
+          <th scope="row"><%= link_to f.id, f %></th>
+          <td><%= f.user.name %></td>
+          <td><%= f.requests_type.name %></td>
+          <td><%= f.check_in %></td>
+          <td><%= f.check_out %></td>
+          <td><%= f.status %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
