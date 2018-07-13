@@ -1,0 +1,40 @@
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <h1 class="my-4 text-center"><%= t "title_skill" %></h1>
+  <div class="card text-center">
+    <div class="card-header"><%= t "detail_user" %></div>
+    <div class="card-body">
+      <form >
+        <div class="form-inline">
+          <label for="name" class="employ"><%= t "name_user" %>:</label>
+          <input type="name" class="form-control" value="<%= current_user.name%>" readonly>
+        </div>
+        <div class="form-inline" class="divison_position">
+          <label for="name" class="inside"><%= t "division" %>:</label>
+          <input type="name" class="form-control" value="<%= current_user.name%>" readonly>
+        </div>
+        <div class="form-inline" class="divison_position">
+          <label for="name" class="inside"><%= t "position" %>:</label>
+          <input type="name" class="form-control" value="<%= current_user.name%>" readonly>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card ">
+    <div class="card-header text-center"><%= t "skill_type" %></div>
+    <div class="card-body">
+      <%= form_for @user_skill do |f| %>
+        <div class="field">
+          <%= f.label :skill_id,"Please choice skill" %><br />
+            <%= f.collection_check_boxes :skill_id, Skill.all, :id, :name do |b| %>
+            <div class="collection-check-box">
+              <%= b.check_box %>
+              <%= b.label %>
+            </div>
+          <% end %>
+        </div>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
