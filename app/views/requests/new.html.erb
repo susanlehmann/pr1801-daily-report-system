@@ -1,0 +1,44 @@
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <h1 class="my-4 text-center"><%= t "title_request" %></h1>
+  <div class="card text-center">
+    <div class="card-header"><%= t "detail_user" %></div>
+    <div class="card-body">
+      <form >
+        <div class="form-inline">
+          <label for="name" id="employ"><%= t "name_user" %>:</label>
+          <input type="name" class="form-control" value="<%= current_user.name%>" readonly>
+        </div>
+        <div class="form-inline" id="division_position">
+          <label for="name" id="inside"><%= t "division" %>:</label>
+          <input type="name" class="form-control" value="<%= current_user.name%>" readonly>
+        </div>
+        <div class="form-inline" id="division_position">
+          <label for="name" id="inside"><%= t "position" %>:</label>
+          <input type="name" class="form-control" value="<%= current_user.name%>" readonly>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card ">
+    <div class="card-header text-center"><%= t "request_type" %></div>
+    <div class="card-body">
+      <%= form_for @request do |f| %>
+        <%= f.label :requests_type_id, "Leave_Type" %>
+        <%= f.select :requests_type_id, RequestsType.all.collect { |p| [ p.name, p.id ] }, include_blank: "--All--" %><br>
+        <div class="field" id="check_in">
+          <%= f.label :check_in ,"Check_in",id: "inside_check" %>
+          <%= f.text_field :check_in,require: :true,as: :string,class: "datepicker" %>
+        </div>
+        <div class="field" id="check_out">
+          <%= f.label :check_out,"Check_out",id: "inside_check" %>
+          <%= f.text_field :check_out,require: :true,as: :string, class: "datepicker" %>
+        </div>
+        <%= f.label :reason,"Reason",id: "inside_check" %>
+        <%= f.text_field :reason,require: :true,as: :string %><br>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

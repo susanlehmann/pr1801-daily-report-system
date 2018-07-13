@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :user_parts
   has_many :requests
   has_many :reports
+  belongs_to :division
   mount_uploader :avatars, AvatarUploader
   attr_accessor :remember_token, :reset_token
   before_save { self.email = email.downcase }

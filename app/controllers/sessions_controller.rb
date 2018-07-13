@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     end
   else
     flash[:danger] = t("user_error")
-    render 'new'
+    render :new
   end
   end
 
