@@ -1,0 +1,10 @@
+<div>
+  <%= form_for @division,url: admin_divisions_path  do |f| %>
+    <%= render "shared/error_messages", object: f.object %>
+    <%= f.label t(:name) %><br>
+    <%= f.text_field :name %><br>
+    <%= f.label t(:manager_id) %><br>
+    <%= f.text_field :manager_id %><br>
+    <%= f.submit t("Create_division"), class: "btn btn-primary bt1" %>
+  <% end %>
+</div>

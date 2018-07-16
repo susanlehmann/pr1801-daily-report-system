@@ -8,3 +8,6 @@ truncate:
   length: 8
 content:
   size: "60x10"
+users:
+  page: 10
+

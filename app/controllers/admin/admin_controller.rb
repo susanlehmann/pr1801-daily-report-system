@@ -8,7 +8,7 @@ class Admin::AdminController < ApplicationController
   private
   def authorized?
     unless current_user.admin?
-      flash[:error] = "You are not authorized to view that page"
+      flash[:error] = t("no_privilege")
       redirect_to current_user
     end
   end

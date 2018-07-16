@@ -10,6 +10,9 @@
           <div class="row">
             <div class="col-md-3 col-lg-3">
               <%= image_tag @user.avatars.thumb.url if @user.avatars?%>
+              <div class="float-right">
+                <%= render "follow_form" %>
+              </div>
               <div class="col-md-9 col-lg-9">
                 <table class="table table-user-information">
                   <tbody>
@@ -27,7 +30,7 @@
                     </tr>
                     <tr>
                       <td><%= t("Division") %></td>
-                      <td><%= t("Division") %></td>
+                      <td><%= @user.division.name %></td>
                     </tr>
                     <tr>
                       <td><%= t("Role") %></td>

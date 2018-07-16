@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   'use strict';
-  $('.navbar-sidenav [data-toggle='tooltip']').tooltip({
-    template: '<div class='tooltip navbar-sidenav-tooltip' role='tooltip' style='pointer-events: none;'><div class='arrow'></div><div class='tooltip-inner'></div></div>'
+  $('.navbar-sidenav [data-toggle="tooltip"]').tooltip({
+    template: '<div class="tooltip navbar-sidenav-tooltip" role="tooltip" style="pointer-events: none;"><div class="arrow"></div><div class="tooltip-inner"></div></div>'
   }),
   $('#sidenavToggler').click(function(o) {
     o.preventDefault(),
@@ -22,7 +22,7 @@ $(document).on('turbolinks:load', function() {
   $(document).scroll(function() {
     $(this).scrollTop() > 100 ? $('.scroll-to-top').fadeIn() : $('.scroll-to-top').fadeOut()
   }),
-  $('[data-toggle='tooltip']').tooltip(),
+  $('[data-toggle="tooltip"]').tooltip(),
   $(document).on('click', 'a.scroll-to-top', function(o) {
     var t = $(this);
     $('html, body').stop().animate({

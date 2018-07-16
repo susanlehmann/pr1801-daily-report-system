@@ -8,6 +8,9 @@ body {
   font-family: 'Poppins', sans-serif;
   background: #fafafa;
 }
+#images1{
+  width:80px;
+}
 
 p {
   font-family: 'Poppins', sans-serif;
@@ -127,8 +130,9 @@ a.article, a.article:hover {
   background: #6d7fcc !important;
   color: #fff !important;
 }
-
-
+.change-backkgound {
+  background-color:#6d7fcc !important;
+}
 /* ---------------------------------------------------
   CONTENT STYLE
 ----------------------------------------------------- */
@@ -143,6 +147,9 @@ a.article, a.article:hover {
 }
 #content.active {
   width: 100%;
+}
+.change_size_image{
+  width: 50px;
 }
 
 /* ---------------------------------------------------
@@ -238,4 +245,10 @@ a.article, a.article:hover {
   .inside_check{
     margin-right:87px !important;
   }
+}
+/* ---------------------------------------------------
+  Admin template
+----------------------------------------------------- */
+.change_style {
+  padding-top: 100px;
 }

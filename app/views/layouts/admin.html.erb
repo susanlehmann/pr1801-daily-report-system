@@ -9,7 +9,10 @@
   </head>
   <body>
     <%= render 'layouts/admin/admin_navbar' %>
-    <div class="container">
+    <div class="container change_style">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/admin/admin_footer' %>

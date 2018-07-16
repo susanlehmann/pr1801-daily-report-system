@@ -1,0 +1,9 @@
+<% @employees.each do |user| %>
+  <%= user.name %>
+  <%= form_for [:admin, user] do |f| %>
+    <%= f.select :division_id, Division.all.map {|p| [p.name, p.id]} %>
+    <td>
+      <%= f.submit t"change_division" %>
+    </td>
+  <% end %>
+<% end %>

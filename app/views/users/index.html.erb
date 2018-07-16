@@ -1,7 +1,28 @@
 <% provide(:title, t("All")) %>
-<h1><%= t("All") %></h1>
-<%= will_paginate %>
-<ul class="users">
-  <%= render @users %>
-</ul>
-<%= will_paginate %>
+<div id="content">
+ <%= render "layouts/toggle_sidebar" %>
+ <h1><%= t("All") %></h1>
+ <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col"><%= t "avatars" %></th>
+      <th scope="col"><%= t "name" %></th>
+      <th scope="col"><%= t "follower" %></th>
+      <th scope="col"><%= t "following" %></th>
+    </tr>
+  </thead>
+  <% @users.each do |user| %>
+    <tbody>
+      <tr>
+          <th scope="row"><%= user.id %></th>
+          <td><%= image_tag user.avatars, class: "thumbnail change_size_image" %></td>
+          <td><%= user.name %></td>
+          <td></td>
+          <td></td>
+      </tr>
+    </tbody>
+  <% end %>
+ </table>
+ <div><%= will_paginate %></div>
+</div>

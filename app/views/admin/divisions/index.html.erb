@@ -1,0 +1,28 @@
+<h3><%= t"manager_divisions" %></h3>
+<table class="table">
+  <thead>
+    <tr>
+      <% if current_user.admin? %>
+        <th scope="col">#</th>
+        <th scope="col"><%= t"division_name" %></th>
+        <th scope="col"><%= t"manager" %></th>
+        <th><%= t"delete" %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <% @divisions.each_with_index do |division, index| %>
+    <tbody>
+      <tr>
+        <% if current_user.admin? %>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= division.name %></td>
+          <td><%= division.user.name %></td>
+          <td>
+            <%= link_to(t("delete_division"), admin_division_path(division), data: { confirm: t("confirm") }, method: :delete, class: "button") %>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+<%= link_to t("create_new_division"),new_admin_division_path ,class: "btn btn-success" %>

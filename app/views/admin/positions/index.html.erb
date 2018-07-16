@@ -1,0 +1,26 @@
+<h3><%= t"manager_positions" %></h3>
+<table class="table">
+  <thead>
+    <tr>
+      <% if current_user.admin? %>
+        <th scope="col">#</th>
+        <th scope="col"><%= t"Position_name" %></th>
+        <th><%= t"delete" %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <% @positions.each_with_index do |position, index| %>
+    <tbody>
+      <tr>
+        <% if current_user.admin? %>
+          <th scope="row"><%= index + 1 %></th>
+          <td><%= position.name %></td>
+          <td>
+            <%= link_to(t(:delete_position), admin_position_path(position), data: {confirm: t("confirm") }, method: :delete, class: "button") %>
+          </td>
+        <% end %>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+<%= link_to t(:create_new_position),new_admin_position_path ,class: "btn btn-success" %>
