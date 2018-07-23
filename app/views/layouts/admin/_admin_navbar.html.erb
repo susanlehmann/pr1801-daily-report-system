@@ -8,7 +8,7 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
           <%= link_to admin_root_path , class: "nav-link" do %>
             <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Dashboard</span>
+            <span class="nav-link-text"><%= t("dashboard") %></span>
           <% end %>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Charts">
@@ -26,22 +26,22 @@
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Manager">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Manager</span>
+            <span class="nav-link-text"><%= (t"Manager") %></span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li><%= link_to "Manager Position", "#" %></li>
-            <li><%= link_to "Manager Division", "#" %></li>
+            <li><%= link_to t(:panager_position), admin_positions_path %></li>
+            <li><%= link_to t(:manager_division), admin_divisions_path %></li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Manager User">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-users"></i>
-            <span class="nav-link-text">Manager User</span>
+            <span class="nav-link-text"><%= t("manager_user") %></span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li><%= link_to "Privilege User", "#" %></li>
-            <li><%= link_to "User Division", "#" %></li>
-            <li><%= link_to "User Position", "#" %></li>
+            <li><%= link_to t(:user_detail), admin_users_url %></li>
+            <li><%= link_to t(:user_division), "#" %></li>
+            <li><%= link_to t(:user_position), "#" %></li>
           </ul>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Menu Levels">
@@ -152,16 +152,16 @@
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-toggle="dropdown" >
-              <i class="fa fa-fw fa-user-secret"></i>Account</a>
+              <i class="fa fa-fw fa-user-secret"></i><%= t("account") %></a>
               <div class="dropdown-menu">
                 <%= link_to "#", class: "dropdown-item" do %>
-                 <i class="fa fa-fw fa-user"></i>Profile
+                 <i class="fa fa-fw fa-user"></i><%= t("profile") %>
                 <% end %>
                 <%= link_to "#", class: "dropdown-item" do %>
-                 <i class="fa fa-fw fa-cog"></i>Setting
+                 <i class="fa fa-fw fa-cog"></i><%= t("setting") %>
                 <% end %>
                 <%= link_to logout_path, method: :delete, class: "dropdown-item" do %>
-                 <i class="fa fa-fw fa-sign-out"></i>Log out
+                 <i class="fa fa-fw fa-sign-out"></i><%= t("log_out") %>
                 <% end %>
               </div>
         </li>

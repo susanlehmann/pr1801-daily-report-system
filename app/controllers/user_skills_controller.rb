@@ -13,15 +13,14 @@ class UserSkillsController < ApplicationController
   def create
     ActiveRecord::Base.transaction do
       current_user.skill_ids = user_skill_params[:skill_id]
-      flash[:success] = t(:notifi)
+      flash[:success] = t("notifi")
       redirect_to user_skills_path
     end
   rescue ActiveRecord::RecordNotFound
     render :new
   end
 
-  def show
-  end
+  def show;end
 
   private
 
@@ -32,7 +31,7 @@ class UserSkillsController < ApplicationController
   def find_user_skill
     @user_skill = UserSkill.find_by id: params[:id]
     if @request.nil?
-      flash[:danger] = t("No_Result")
+      flash[:danger] = t("no_result")
       redirect_to requests_path
     end
   end

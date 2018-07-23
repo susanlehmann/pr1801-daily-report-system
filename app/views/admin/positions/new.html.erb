@@ -1,0 +1,9 @@
+<div>
+  <h3><%= t"Create_position" %></h3>
+  <%= form_for @position,url: admin_positions_path  do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <%= f.label t(:name) %><br>
+    <%= f.text_field :name %><br>
+    <%= f.submit t("Create_Position"), class: "btn btn-primary bt1" %>
+  <% end %>
+</div>

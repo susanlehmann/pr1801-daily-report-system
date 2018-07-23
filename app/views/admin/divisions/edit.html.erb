@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-header"><%= t("division") %></div>
+    <div class="card-body">
+      <%= form_for [:admin,@division] do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        <%= f.label t(:name) %><br>
+        <%= f.text_field :name, class: 'form-control' %><br>
+        <%= f.label t(:manager_id) %><br>
+        <%= f.text_field :manager_id, class: 'form-control' %><br>
+        <%= f.submit t("update_division"), class: "btn btn-primary bt1" %>
+      <% end %>
+    </div>
+</div>

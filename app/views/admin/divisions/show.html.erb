@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-header"><%= t("division") %>_<%= @division.name %></div>
+  <div class="card-body">
+    <h3 class="text-center"><%= t"all_employee_in_division" %></h3>
+    <% if current_user.admin? %>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col"><%= t"employee_name" %></th>
+            <th scope="col"><%= t"employee_email" %></th>
+          </tr>
+        </thead>
+          <% @division.employees.each do |f| %>
+            <tr>
+             <th scope="row"><%= f.name %></td>
+             <th><%= f.email %></th>
+            </tr>
+          <% end %>
+      </table>
+      <%= link_to t("edit_division"),edit_admin_division_path, class: "btn btn-success" %>
+      <%= link_to t("add_member_to_division"),edit_admin_user_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
