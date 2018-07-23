@@ -1,0 +1,25 @@
+<% provide(:title, @title) %>
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section>
+        <h1><%= @user.name %></h1>
+        <span><%= link_to t("view_my_profile"), @user %></span>
+        <span><b><%= t("requests") %>:</b> <%= @user.requests.count %></span>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+    </aside>
+    <div class="col-md-8">
+      <h3><%= @title %></h3>
+      <% if @users.any? %>
+        <ul>
+          <%= render @users %>
+        </ul>
+        <%= will_paginate %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<%= provide(:title, t("edit_request")) %>
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <h1><%= t("edit_request") %></h1>
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @request do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :requests_type_id, "Leave_Type" %>
+      <%= f.select :requests_type_id, RequestsType.all.collect { |p| [ p.name, p.id ] }, include_blank: "--All--" %><br>
+      <div class="field" id="check_in">
+        <%= f.label :check_in ,"Check_in",id: "inside_check" %>
+        <%= f.text_field :check_in,require: :true,as: :string,class: "datepicker" %>
+      </div>
+      <div class="field" id="check_out">
+        <%= f.label :check_out,"Check_out",id: "inside_check" %>
+        <%= f.text_field :check_out,require: :true,as: :string, class: "datepicker" %>
+      </div>
+      <%= f.label :reason,"Reason",id: "inside_check" %>
+      <%= f.text_field :reason,require: :true,as: :string %><br>
+      <%= f.submit t("Save"), class: "btn btn-primary bt1" %>
+    <% end %>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   layout "application"
   add_breadcrumb "Dashboard", :current_user
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show]
+  before_action :logged_in_user, only: [:index, :edit, :update, :destroy, :show,:following,:followers]
   before_action :correct_user, only: [:edit, :update]
   before_action :verify_admin, only: [:destroy]
-  before_action :find_user, only: [:edit, :update, :show]
+  before_action :find_user, only: [:edit, :update, :show,:followers,:following]
   def index
     @users = User.load_data.paginate(page: params[:page], per_page: Settings.users.page)
   end
@@ -39,6 +39,18 @@ class UsersController < ApplicationController
     elsif
       render :edit
     end
+  end
+
+  def following
+    @title = t"following"
+    @users = @user.following.paginate(page: params[:page], per_page: Settings.users.page)
+    render 'show_follow'
+  end
+
+  def followers
+    @title = t"followers"
+    @users = @user.followers.paginate(page: params[:page], per_page: Settings.users.page)
+    render 'show_follow'
   end
 
   private

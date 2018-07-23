@@ -10,9 +10,10 @@
         <th scope="col">Check_in</th>
         <th scope="col">Check_out</th>
         <th scope="col">Status</th>
+        <th scope="col"><%= t("edit_request") %></th>
       </tr>
     </thead>
-     <% current_user.division.users.map(&:requests).flatten.each do |f| %>
+     <% current_user.division.employees.map(&:requests).flatten.each do |f| %>
         <tbody>
           <tr>
             <th scope="row"><%= link_to f.id, f %></th>
@@ -21,6 +22,9 @@
             <td><%= f.check_in %></td>
             <td><%= f.check_out %></td>
             <td><%= f.status %></td>
+            <% if f.status == "pending" %>
+              <td><%= link_to t("edit_request"), edit_request_path(f) %> </td>
+            <% end %>
           </tr>
         </tbody>
       <% end %>
