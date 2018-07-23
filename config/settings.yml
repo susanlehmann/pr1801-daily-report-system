@@ -10,4 +10,5 @@ content:
   size: "60x10"
 users:
   page: 10
-
+text_field:
+  size: 3

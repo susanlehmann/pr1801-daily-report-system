@@ -11,11 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap-datepicker
  */
 
+  @import "bootstrap-datepicker";
   @import "bootstrap";
   @import "static_pages";
   @import "font-awesome";
   @import "sb-admin";
   @import "https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css";
-  @import "bootstrap-datepicker";

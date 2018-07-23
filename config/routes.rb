@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     end
     resources :reports do
       member do
-        post :approve
-        post :reject
+        patch :approve
+        patch :reject
       end
     end
     resources :requests do

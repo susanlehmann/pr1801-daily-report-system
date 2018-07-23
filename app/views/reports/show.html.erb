@@ -19,10 +19,10 @@
   <div class="card-footer">
     <% if current_user.manager? && @report.pending? %>
       <span class="pull-right">
-        <%= link_to t("reject_report"), reject_report_path, method: :post, class: "btn btn-sm btn-danger fa fa-ban" %>
+        <%= link_to t("reject_report"), reject_report_path, method: :patch, class: "btn btn-sm btn-danger fa fa-ban" %>
       </span>
       <span class="pull-right">
-        <%= link_to t("approve_report"), approve_report_path, method: :post, class: "btn btn-sm btn-success fa fa-check" %>
+        <%= link_to t("approve_report"), approve_report_path, method: :patch, class: "btn btn-sm btn-success fa fa-check" %>
       </span>
     <% else %>
     <% unless @report.approved? && current_user.manager? %>

@@ -2,20 +2,35 @@ class ReportsController < ApplicationController
   before_action :logged_in_user, only: [:index, :new, :create, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
   before_action :find_report, only: [:show, :approve, :reject]
+  before_action :set_current_user
+  before_action :verify_manager?, only: [:approve, :reject]
 
   def index
     if current_user.manager?
-      @reports = Report.all.load_data
+      @reports = Report.load_data.same_division
+      if params[:q].present?
+        @reports = @reports.joins(:user).where("status LIKE ? OR content LIKE ? OR users.name LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%", "%#{params[:q]}%")
+        find_status
+      else
+        @reports
+      end
+      if params[:d].present?
+        @reports = @reports.where("DATE_FORMAT(reported_at, '%Y-%m-%d') LIKE ?", "%#{params[:d]}%")
+      end
     else
-      @reports = current_user.reports.all.load_data
+      @reports = current_user.reports.load_data
+      if params[:q].present?
+        @reports = @reports.where("status LIKE ? OR content LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
+        find_status_user
+      else
+        @reports
+      end
     end
   end
 
-  def show
-  end
+  def show;end
 
-  def edit
-  end
+  def edit;end
 
   def update
     @report.status = Report.statuses[:pending]
@@ -53,7 +68,7 @@ class ReportsController < ApplicationController
   end
 
   def approve
-    if @report.verify(current_user)
+    if @report.update_attributes status: :approved
       redirect_to @report, notice: t("approved")
     else
       redirect_to reports_path, notice: t("error")
@@ -61,7 +76,7 @@ class ReportsController < ApplicationController
   end
 
   def reject
-    if @report.reject(current_user)
+    if @report.update_attributes status: :rejected
       redirect_to @report, notice: t("rejected")
     else
       redirect_to reports_path, notice: t("error")
@@ -82,8 +97,30 @@ class ReportsController < ApplicationController
     @report = Report.find_by id: params[:id]
     if @report.nil?
       render file: "public/404.html", status: :not_found
-    else
-      render :show
+    end
+  end
+
+  def verify_manager?
+    return false unless current_user.manager?
+  end
+
+  def find_status
+    if params[:q] == "approved"
+      @reports = Report.same_division.where("status = '1'")
+    elsif params[:q] == "rejected"
+      @reports = Report.same_division.where("status = '2'")
+    elsif params[:q] == "pending"
+      @reports = Report.same_division.where("status = '0'")
+    end
+  end
+
+  def find_status_user
+    if params[:q] == "approved"
+      @reports = current_user.reports.where("status = '1'")
+    elsif params[:q] == "rejected"
+      @reports = current_user.reports.where("status = '2'")
+    elsif params[:q] == "pending"
+      @reports = current_user.reports.where("status = '0'")
     end
   end
 end

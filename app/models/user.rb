@@ -37,6 +37,14 @@ class User < ApplicationRecord
 
   scope :load_data, -> {select(:id, :avatars, :name, :email, :role,:division_id,:position_id)}
 
+  scope :same_division, -> {
+    joins(:division).where("divisions.id LIKE ?", User.current.division.id)
+  }
+
+  scope :load_user, -> {
+    where(role: ["user", "manager"])
+  }
+
   def set_default_role
     self.role ||= :user
   end
@@ -114,6 +122,14 @@ class User < ApplicationRecord
           csv << attributes.map { |attr| user.send(attr) }
         end
       end
+    end
+
+    def current
+      Thread.current[:user]
+    end
+
+    def current=(user)
+      Thread.current[:user] = user
     end
   end
 end

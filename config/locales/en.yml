@@ -94,3 +94,8 @@ en:
   no_privilege: "You are not authorized to view that page"
   import_csv: "Import CSV"
   file_wrong: "Please check line"
+  search: "Search"
+  sort: "Sort"
+  search_by: "Search by ..."
+  by_month: "By Month"
+  by_year: "By Year"
