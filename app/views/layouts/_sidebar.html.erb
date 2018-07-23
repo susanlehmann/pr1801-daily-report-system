@@ -4,28 +4,14 @@
   </div>
   <div class="card change-backkgound">
     <div class="card-img-top text-center">
-      <%= image_tag current_user.avatars.url(:thumb),class: "rounded-circle" %>
+      <%= image_tag current_user.avatars.url(:thumb),class: "rounded-circle change_size_image" %>
     </div>
     <div class="card-body text-center">
-      <a href="<%= following_user_path(@user) %>">
-        <i class="fa fa-fw fa-plus"></i>
-        <strong>
-          <%= @user.following.all.size %>
-        </strong>
-        <%= t("following") %>
-      </a><br>
-      <a href="<%= followers_user_path(@user) %>">
-        <i class="fa fa-fw fa-rss"></i>
-        <strong>
-          <%= @user.followers.all.size %>
-        </strong>
-        <%= t("followers") %>
-      </a><br>
+      <%= render 'shared/stats' %>
       <%= link_to logout_path, method: :delete do%>
         <i class="fa fa-fw fa-sign-out"></i><%= t("signout") %>
       <% end %>
     </div>
-
   </div>
   <ul class="list-unstyled components">
     <li>

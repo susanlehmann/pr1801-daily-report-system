@@ -4,9 +4,15 @@
     <div class="card-header"><%= t("Leave_request") %></div>
     <div class="card-body">
       <% if current_user.manager? %>
-        <%= @request.check_in %>
-        <%= @request.check_out %>
-        <%= @request.reason %>
+        <span><a><%= t("check_in") %>:</a>
+          <%= @request.check_in %>
+        </span><br>
+        <span><a><%= t("check_out") %>:</a>
+          <%= @request.check_out %>
+        </span><br>
+        <span><a><%= t("reason") %>:</a>
+          <%= @request.reason %>
+        </span><br>
         <% if @request.pending? %>
           <%= link_to "accept_off", verify_request_path, method: :post, class: 'btn btn-success', data: { confirm: "accepted?"} %>
           <%= link_to 'Refuse_leave', reject_request_path, method: :post, class: 'btn btn-danger', data: { confirm: "refuse leave"} %>

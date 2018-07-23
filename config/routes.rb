@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
     get "/signup", to: "users#new"
     root "static_pages#home"
-    resources :relationships,only: [:create, :destroy]
     resources :users do
       member do
         get :following, :followers
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
         post :reject
       end
     end
+    resources :relationships,only: [:create, :destroy]
     resources :user_skills
     get 'static_pages/contact'
     get '/login', to: 'sessions#new'
