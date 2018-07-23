@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
   before_action :logged_in_user,only: [:index,:new, :show]
-  before_action :find_request,only: [:show,:verify,:reject]
+  before_action :find_request,only: [:show,:verify,:reject,:edit,:update]
 
   def index
     @requests = if current_user.manager?
@@ -12,6 +12,17 @@ class RequestsController < ApplicationController
 
   def new
     @request = Request.new
+  end
+
+  def edit;end
+
+  def update
+    if @request.update_attributes request_params
+      flash[:success] = t("update_request")
+      redirect_to requests_path
+    else
+      render :edit
+    end
   end
 
   def create
