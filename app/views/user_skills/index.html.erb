@@ -5,9 +5,13 @@
       <%= t("Skill_Manager") %>
     </div>
     <div class="card-content">
-    <%= @user_skills.each do |f| %>
-      <%= f.skill_id %>
-    <% end %>
+      <div>
+        <%= pie_chart @user_skills.group(:skill_id).all.size %>
+      </div>
+      <% @user_skills.each do |f| %>
+        <%#= pie_chart f.skill.group(:name).all.size %>
+        <%= f.skill.name %>
+      <% end %>
     </div>
   </div>
 </div>

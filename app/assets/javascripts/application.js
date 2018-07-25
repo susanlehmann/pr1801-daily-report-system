@@ -16,6 +16,12 @@
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require turbolinks
+//= require Chart.bundle
+//= require chartkick
+//= require chart
+//= require Chart.min
+//= require nvd3
+//= require google
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {

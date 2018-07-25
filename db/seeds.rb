@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-divisions = Division.create([{name:'kinh te',manager_id:'2'},{name:'doi ngoai',manager_id: '4'}])
-
 users = User.create([{name: 'killua',email: 'killua@gmail.com',password: '12345678',password_confirmation: '12345678', division_id: '1'},
 {name: 'manager1',email: 'manager1@gmail.com',password: '12345678',password_confirmation: '12345678', division_id: '1', role: 'manager'} ,
 {name: 'killua1',email: 'killua1@gmail.com',password: '12345678',password_confirmation: '12345678', division_id: '2'} ,
 {name: 'manager2',email: 'manager2@gmail.com',password: '12345678',password_confirmation: '12345678', division_id: '2',role: 'manager'}])
+
+skills = Skill.create([{name:"Data Analysis"}, {name:"Copywriting"}, {name:"Foreign Languages"},{name:"Accounting"},{name:"Computer Languages"},{name:"Mathematics"},{name:"Graphic Design"},{name:"Planning / Event Planning"},{name:"SEO / SEM Marketing"},{name:"Bookkeeping"}])

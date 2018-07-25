@@ -45,6 +45,10 @@ gem "jbuilder", "~> 2.5"
  gem "omniauth-facebook"
  gem "omniauth-google-oauth2"
  gem "faker"
+ gem "wdm"
+ gem "chart"
+ gem "chartjs-ror"
+ gem "chartkick"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 

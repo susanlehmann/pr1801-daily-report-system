@@ -34,11 +34,15 @@ class Admin::UsersController < Admin::AdminController
   end
 
   def destroy
-    if @user.destroy
-      flash[:success] = t("user_deleted")
-      redirect_to admin_users_url
+    if !current_user.admin?
+      if @user.destroy
+        flash[:success] = t("user_deleted")
+        redirect_to admin_users_url
+      else
+        render :index
+      end
     else
-      render :index
+      flash[:danger] = t("user_not_deleted")
     end
   end
 

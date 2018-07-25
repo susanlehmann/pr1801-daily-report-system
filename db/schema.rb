@@ -30,6 +30,9 @@ ActiveRecord::Schema.define(version: 20180719143008) do
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_relationships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
   create_table "reports", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -51,7 +54,6 @@ ActiveRecord::Schema.define(version: 20180719143008) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "sign_date"
-    t.integer "manager_id"
   end
 
   create_table "requests_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
