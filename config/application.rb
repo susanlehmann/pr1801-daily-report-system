@@ -15,5 +15,7 @@ module Pr1801DailyReportSystem
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.exceptions_app = self.routes
   end
 end

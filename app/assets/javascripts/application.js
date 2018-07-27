@@ -18,7 +18,6 @@
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
-//= require bootstrap-datepicker
 
 $(document).on('turbolinks:load', function() {
   $('#sidebarCollapse').on('click', function () {
