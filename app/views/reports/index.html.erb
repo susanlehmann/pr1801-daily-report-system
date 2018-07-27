@@ -1,5 +1,27 @@
 <% provide(:title, t("all_reports")) %>
 <div id="content">
   <%= render "layouts/toggle_sidebar" %>
+  <div class="form-group">
+    <div class="row">
+      <div class="form-inline">
+        <%= form_tag(reports_path, :method => "get", id: "search-form", :html => {class: "form"}) do %>
+        <div class="form-group">
+          <%= text_field_tag :q, params[:q], placeholder: t("search_by"), class: "form-control" %>
+        </div>
+        <%= submit_tag t("search"), class: "btn btn-primary" %>
+        <% end %>
+        <%= form_tag(reports_path, :method => "get", :html => {class: "form"}) do %>
+        <div class="form-group">
+          <%= date_field_tag :d, params[:d], class: "form-control", size: Settings.text_field.size %>
+        </div>
+        <%= submit_tag t("sort"), class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% if @reports.present? %>
   <%= render @reports %>
+  <% else %>
+  <%= t("nothing") %>
+<% end %></div>
 </div>

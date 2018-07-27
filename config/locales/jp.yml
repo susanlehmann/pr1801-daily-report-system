@@ -91,3 +91,8 @@ jp:
   no_privilege: ""
   import_csv: ""
   file_wrong: ""
+  search: ""
+  sort: ""
+  search_by: ""
+  by_month: ""
+  by_year: ""

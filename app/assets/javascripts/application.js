@@ -12,11 +12,13 @@
 //
 //= require jquery
 //= require popper
+//= require jquery-ui
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require turbolinks
 //= require_tree .
+//= require bootstrap-datepicker
 
 $(document).on('turbolinks:load', function() {
   $('#sidebarCollapse').on('click', function () {
@@ -31,7 +33,15 @@ $(document).ready(function() {
     todayBtn: true,
     minView: 'day',
     autoclose: true,
+    clearBtn: true,
     format: 'yyyy-mm-dd hh:00'
   });
 });
-
+// $(document).ready(function() {
+//   $('#reported_at_date').datepicker({
+//     clearBtn: true,
+//     autoclose: true,
+//     todayHighlight: true,
+//     format: 'mm-yyyy'
+//   });
+// });

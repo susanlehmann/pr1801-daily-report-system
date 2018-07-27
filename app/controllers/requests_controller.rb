@@ -4,10 +4,10 @@ class RequestsController < ApplicationController
 
   def index
     @requests = if current_user.manager?
-                  Request.all
-                else
-                  current_user.requests
-                end
+      Request.all
+    else
+      current_user.requests
+    end
   end
 
   def new

@@ -3,6 +3,11 @@ class Admin::UsersController < Admin::AdminController
 
   def index
     @users = User.load_data.paginate(page: params[:page], per_page: Settings.users.page)
+    if params[:q]
+      @users = User.load_data.where("name LIKE ? OR email LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%").paginate(page: params[:page], per_page: Settings.users.page)
+    else
+      @users
+    end
     #@import = User::Import.new
 
     respond_to do |format|

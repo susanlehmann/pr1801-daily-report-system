@@ -5,8 +5,23 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   before_action :verify_admin, only: [:destroy]
   before_action :find_user, only: [:edit, :update, :show,:followers,:following]
+
   def index
-    @users = User.load_data.paginate(page: params[:page], per_page: Settings.users.page)
+    if current_user.manager?
+      @users = User.same_division.load_user.load_data.paginate(page: params[:page], per_page: Settings.users.page)
+      if params[:q]
+        @users = User.same_division.where("name LIKE ? OR email LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%").paginate(page: params[:page], per_page: Settings.users.page)
+      else
+        @users
+      end
+    else
+      @users = User.load_user.paginate(page: params[:page], per_page: Settings.users.page)
+      if params[:q]
+        @users = User.where("name LIKE ? OR email LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%").paginate(page: params[:page], per_page: Settings.users.page)
+      else
+        @users
+      end
+    end
   end
 
   def show

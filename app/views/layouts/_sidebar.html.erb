@@ -20,6 +20,11 @@
     <li>
       <%= link_to t("user"), user_path(current_user) %>
     </li>
+    <% if current_user.manager? %>
+    <li>
+      <%= link_to t("division"), users_path %>
+    </li>
+    <% end %>
     <li>
       <a href="#">Notification</a>
     </li>

@@ -1,28 +1,44 @@
 <% provide(:title, t("All")) %>
 <div id="content">
- <%= render "layouts/toggle_sidebar" %>
- <h1><%= t("All") %></h1>
- <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col"><%= t "avatars" %></th>
-      <th scope="col"><%= t "name" %></th>
-      <th scope="col"><%= t "follower" %></th>
-      <th scope="col"><%= t "following" %></th>
-    </tr>
-  </thead>
-  <% @users.each do |user| %>
+  <%= render "layouts/toggle_sidebar" %>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-lg-4 col-lg-offset-4">
+        <div class="input-group">
+          <%= form_tag(users_path, :method => "get", id: "search-form", :html => {class: "form"}) do %>
+          <%= text_field_tag :q, params[:q], class: "form-control" %>
+        </div>
+        <span class="input-group-btn"><%= submit_tag "Search",class: "btn btn-default" %></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% if @users.present? %>
+  <h1><%= t("All") %></h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><%= t "avatars" %></th>
+        <th scope="col"><%= t "name" %></th>
+        <th scope="col"><%= t "follower" %></th>
+        <th scope="col"><%= t "following" %></th>
+      </tr>
+    </thead>
+    <% @users.each do |user| %>
     <tbody>
       <tr>
-          <th scope="row"><%= user.id %></th>
-          <td><%= image_tag user.avatars, class: "thumbnail change_size_image" %></td>
-          <td><%= user.name %></td>
-          <td></td>
-          <td></td>
+        <th scope="row"><%= user.id %></th>
+        <td><%= image_tag user.avatars, class: "thumbnail change_size_image" %></td>
+        <td><%= user.name %></td>
+        <td></td>
+        <td></td>
       </tr>
     </tbody>
+    <% end %>
+  </table>
+  <div><%= will_paginate %></div>
+  <% else %>
+  <%= t("nothing") %>
   <% end %>
- </table>
- <div><%= will_paginate %></div>
 </div>

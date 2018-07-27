@@ -1,16 +1,16 @@
 <% provide :title, t("users") %>
 <h3><%= t"manager_user" %></h3>
 <div class="row">
-<div class="col-md-12">
-  <div class="col-md-6">
-    <%= form_tag import_admin_users_path,multipart: true do %>
+  <div class="col-md-12">
+    <div class="col-md-6">
+      <%= form_tag import_admin_users_path,multipart: true do %>
       <%= file_field_tag :file %>
       <%= submit_tag t("import_csv") %>
-    <% end %>
-  </div>
-  <div class="col-md-6">
-    <%= link_to t("export_csv"), admin_users_path(format: "csv"),class: "btn btn-primary" %>
-  </div>
+      <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to t("export_csv"), admin_users_path(format: "csv"),class: "btn btn-primary" %>
+    </div>
   </div><br>
 </div>
 <table class="table">
@@ -20,34 +20,40 @@
       <th scope="col"><%= t "avatars" %></th>
       <th scope="col"><%= t "name" %></th>
       <% if current_user.admin? %>
-        <th><%= t "delete" %></th>
-        <th><%= t "privileged" %></th>
-        <th><%= t "division" %></th>
+      <th><%= t "delete" %></th>
+      <th><%= t "privileged" %></th>
+      <th><%= t "division" %></th>
       <% end %>
     </tr>
   </thead>
+  <%= form_tag(admin_users_path, :method => "get", id: "search-form", :html => {class: "form"}) do %>
+  <div class="form-group">
+    <%= text_field_tag :q, params[:q], class: "form-control" %>
+  </div>
+  <%= submit_tag t("search"), class: "btn btn-primary fa fa-search" %>
+  <% end %>
   <% @users.each_with_index do |user, index| %>
-    <tbody>
-      <tr>
-        <% if current_user.admin? && !current_user?(user) %>
-          <th scope="row"><%= index + 1 %></th>
-          <td><%= image_tag user.avatars, class: "thumbnail change_size_image" %></td>
-          <td><%= user.name %></td>
-          <td>
-            <%= link_to t("delete"), admin_user_path(user), method: :delete,data: {confirm: t("confirm")} %>
-          </td>
-          <td>
-            <%= form_for [:admin, user] do |f| %>
-              <%= f.select :role, User.roles.keys.map {|role| [role.titleize,role]} %>
-              <td>
-                <%= f.select :division_id, Division.all.map {|p| [p.name, p.id]} %>
-              </td>
-              <td><%= f.submit t("change") %></td>
-            <% end %>
-          </td>
+  <tbody>
+    <tr>
+      <% if current_user.admin? && !current_user?(user) %>
+      <th scope="row"><%= index + 1 %></th>
+      <td><%= image_tag user.avatars, class: "thumbnail change_size_image" %></td>
+      <td><%= user.name %></td>
+      <td>
+        <%= link_to t("delete"), admin_user_path(user), method: :delete,data: {confirm: t("confirm")} %>
+      </td>
+      <td>
+        <%= form_for [:admin, user] do |f| %>
+        <%= f.select :role, User.roles.keys.map {|role| [role.titleize,role]} %>
+        <td>
+          <%= f.select :division_id, Division.all.map {|p| [p.name, p.id]} %>
+        </td>
+        <td><%= f.submit t("change") %></td>
         <% end %>
-      </tr>
-    </tbody>
+      </td>
+      <% end %>
+    </tr>
+  </tbody>
   <% end %>
 </table>
 <div><%= will_paginate %></div>

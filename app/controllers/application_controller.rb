@@ -19,4 +19,8 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  def set_current_user
+    User.current = current_user
+  end
 end
