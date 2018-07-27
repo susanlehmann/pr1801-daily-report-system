@@ -6,16 +6,16 @@ class RequestsController < ApplicationController
     @requests = if current_user.manager?
       Request.all
       if params[:d].present?
-        @reports = @reports.search(params[:d])
+        @requests = @requests.search(params[:d])
       else
-        @reports
+        @requests
       end
     else
       current_user.requests
       if params[:d].present?
-        @reports = @reports.search(params[:d])
+        @requests = @requests.search(params[:d])
       else
-        @reports
+        @requests
       end
     end
   end

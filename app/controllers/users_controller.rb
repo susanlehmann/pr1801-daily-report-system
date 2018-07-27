@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
   def show
     @reports = @user.reports.load_data
+    @requests = @user.requests.paginate page: params[:page]
   end
 
   def new

@@ -9,7 +9,7 @@
         <p class="card-text">
           <div class="row">
             <div class="col-md-3 col-lg-3">
-              <%= image_tag @user.avatars.thumb.url if @user.avatars?%>
+              <%= image_tag current_user.avatars.thumb.url if current_user.avatars?%>
               <div class="float-right">
                 <%= render "follow_form" if logged_in? %>
               </div>
@@ -18,11 +18,11 @@
                   <tbody>
                     <tr>
                       <td><%= t("name") %></td>
-                      <td><%= @user.name %></td>
+                      <td><%= current_user.name %></td>
                     </tr>
                     <tr>
                       <td><%= t("Email") %></td>
-                      <td><%= @user.email %></td>
+                      <td><%= current_user.email %></td>
                     </tr>
                     <tr>
                       <td><%= t("Department") %></td>
@@ -30,11 +30,11 @@
                     </tr>
                     <tr>
                       <td><%= t("Division") %></td>
-                      <td><%= @user.division.name %></td>
+                      <td><%= current_user.division.name %></td>
                     </tr>
                     <tr>
                       <td><%= t("Role") %></td>
-                      <td><%= @user.role %></td>
+                      <td><%= current_user.role %></td>
                     </tr>
                   </tbody>
                 </table>
@@ -55,13 +55,29 @@
     </div>
   </div>
   <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
+    <%  @user.followers.each do |f| %>
+      <% f.requests.each do |request| %>
+        <table class="table">
+          <thread class="thread-dark">
+            <tr>Request_Type</tr>
+            <tr>Check_in</tr>
+            <tr>Check_out</tr>
+            <tr>Reason</tr>
+            <tr>Status</tr>
+          </thread>
+          <tbody>
+            <tr>
+              <td><%= request.requests_type.name %>
+              <td><%= request.check_in %></td>
+              <td><%= request.check_out %></td>
+              <td><%= request.reason %></td>
+              <td><%= request.status %></td>
+            </tr>
+          </tbody>
+        </table>
+      <% end %>
+    <%= will_paginate @requests %>
+    <% end %>
   </div>
 </div>
 <% elsif %>
