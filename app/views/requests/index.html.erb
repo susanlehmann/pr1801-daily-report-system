@@ -1,6 +1,14 @@
 <% provide(:title, t("requests")) %>
 <div id="content">
   <%= render "layouts/toggle_sidebar" %>
+  <div class="form-inline">
+    <%= form_tag(requests_path, :method => "get", :html => {class: "form"}) do %>
+    <div class="form-group">
+      <%= date_field_tag :d, params[:d], class: "form-control", size: Settings.text_field.size %>
+      <%= submit_tag t("sort"), class: "btn btn-primary" %>
+    </div>
+  </div>
+  <% end %>
   <table class="table">
     <thead>
       <tr>
@@ -14,34 +22,34 @@
       </tr>
     </thead>
     <% if current_user.manager? %>
-     <% current_user.division.employees.map(&:requests).flatten.each do |f| %>
-        <tbody>
-          <tr>
-            <th scope="row"><%= link_to f.id, f %></th>
-            <td><%= f.user.name %></td>
-            <td><%= f.requests_type.name %></td>
-            <td><%= f.check_in %></td>
-            <td><%= f.check_out %></td>
-            <td><%= f.status %></td>
-          </tr>
-        </tbody>
-      <% end %>
+    <% current_user.division.employees.map(&:requests).flatten.each do |f| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= link_to f.id, f %></th>
+        <td><%= f.user.name %></td>
+        <td><%= f.requests_type.name %></td>
+        <td><%= f.check_in %></td>
+        <td><%= f.check_out %></td>
+        <td><%= f.status %></td>
+      </tr>
+    </tbody>
+    <% end %>
     <% else %>
-      <% current_user.requests.each do |f| %>
-        <tbody>
-          <tr>
-            <th scope="row"><%= link_to f.id, f %></th>
-            <td><%= f.user.name %></td>
-            <td><%= f.requests_type.name %></td>
-            <td><%= f.check_in %></td>
-            <td><%= f.check_out %></td>
-            <td><%= f.status %></td>
-            <% if f.status == "pending" %>
-              <td><%= link_to t("edit_request"), edit_request_path(f) %> </td>
-            <% end %>
-          </tr>
-        </tbody>
-      <% end %>
+    <% current_user.requests.each do |f| %>
+    <tbody>
+      <tr>
+        <th scope="row"><%= link_to f.id, f %></th>
+        <td><%= f.user.name %></td>
+        <td><%= f.requests_type.name %></td>
+        <td><%= f.check_in %></td>
+        <td><%= f.check_out %></td>
+        <td><%= f.status %></td>
+        <% if f.status == "pending" %>
+        <td><%= link_to t("edit_request"), edit_request_path(f) %> </td>
+        <% end %>
+      </tr>
+    </tbody>
+    <% end %>
     <% end %>
   </table>
 </div>
