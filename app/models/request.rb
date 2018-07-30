@@ -8,6 +8,14 @@ class Request < ApplicationRecord
     order(status: :asc, updated_at: :desc)
   }
 
+  scope :same_division, -> {
+    joins(:user).where("users.division_id = ?", User.current.division_id)
+  }
+
+  scope :search, -> (search_date) {
+    where("created_at = ?", search_date)
+  }
+
   def verify(manager)
     return false if manager.nil?
     update_columns(status: :approved, sign_date: Time.zone.now)

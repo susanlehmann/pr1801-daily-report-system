@@ -16,6 +16,13 @@
         </div>
         <%= submit_tag t("sort"), class: "btn btn-primary" %>
         <% end %>
+        <%= form_tag(reports_path, :method => "get", :html => {class: "form"}) do %>
+        <div class="form-group">
+          <%= date_field_tag :s, params[:s], class: "form-control", size: Settings.text_field.size %>
+          <%= date_field_tag :e, params[:e], class: "form-control", size: Settings.text_field.size %>
+        </div>
+        <%= submit_tag t("sort"), class: "btn btn-primary" %>
+        <% end %>
       </div>
     </div>
   </div>

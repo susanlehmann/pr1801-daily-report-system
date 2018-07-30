@@ -5,8 +5,18 @@ class RequestsController < ApplicationController
   def index
     @requests = if current_user.manager?
       Request.all
+      if params[:d].present?
+        @reports = @reports.search(params[:d])
+      else
+        @reports
+      end
     else
       current_user.requests
+      if params[:d].present?
+        @reports = @reports.search(params[:d])
+      else
+        @reports
+      end
     end
   end
 
