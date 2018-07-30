@@ -46,7 +46,7 @@ gem "jbuilder", "~> 2.5"
  gem "omniauth-google-oauth2"
  gem "faker"
  gem "bootstrap-datepicker-rails"
- gem "wdm"
+# gem "wdm"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 

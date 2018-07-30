@@ -1,0 +1,30 @@
+<% provide(:title, t("conversations")) %>
+<div id="content">
+  <%= render "layouts/toggle_sidebar" %>
+  <div class="card-deck">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title">
+          <ul>
+            <% @messages.each do |message| %>
+            <% if message.body %>
+            <li>
+              <h4><%= message.user.name %></h4>
+              <p><%= message.body %></p>
+            </li>
+            <% end %>
+            <% end %>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <%= form_for [@conversation, @message] do |f| %>
+          <div class="field">
+            <%= f.text_area :body, class: "form-control", placeholder: t("new_message") %>
+          </div>
+          <%= f.submit t("send") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

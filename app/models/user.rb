@@ -38,7 +38,7 @@ class User < ApplicationRecord
   scope :load_data, -> {select(:id, :avatars, :name, :email, :role,:division_id,:position_id)}
 
   scope :same_division, -> {
-    joins(:division).where("divisions.id LIKE ?", User.current.division.id)
+    where(division_id: User.current.division_id)
   }
 
   scope :load_user, -> {

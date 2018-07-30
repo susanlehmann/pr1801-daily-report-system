@@ -15,13 +15,30 @@ class ReportsController < ApplicationController
         @reports
       end
       if params[:d].present?
-        @reports = @reports.where("DATE_FORMAT(reported_at, '%Y-%m-%d') LIKE ?", "%#{params[:d]}%")
+        @reports = @reports.search_date(params[:d])
+      else
+        @reports
+      end
+      if (params[:s] && params[:e]).present?
+        @reports = @reports.reported_between(params[:s], params[:e])
+      else
+        @reports
       end
     else
       @reports = current_user.reports.load_data
       if params[:q].present?
         @reports = @reports.where("status LIKE ? OR content LIKE ?", "%#{params[:q]}%", "%#{params[:q]}%")
         find_status_user
+      else
+        @reports
+      end
+      if params[:d].present?
+        @reports = @reports.search_date(params[:d])
+      else
+        @reports
+      end
+      if (params[:s] && params[:e]).present?
+        @reports = @reports.reported_between(params[:s], params[:e])
       else
         @reports
       end
@@ -52,7 +69,8 @@ class ReportsController < ApplicationController
       flash[:success] = t("create")
       redirect_to user_path(current_user)
     else
-      render "/"
+      flash[:error] = t("error")
+      redirect_to new_report_path
     end
   end
 
