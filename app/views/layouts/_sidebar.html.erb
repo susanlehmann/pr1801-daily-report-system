@@ -24,7 +24,14 @@
     <li>
       <%= link_to t("division"), users_path %>
     </li>
+    <% else %>
+    <li>
+      <%= link_to t("Users"), users_path %>
+    </li>
     <% end %>
+    <li>
+      <%= link_to t("conversations"), conversations_path %>
+    </li>
     <li>
       <a href="#">Notification</a>
     </li>

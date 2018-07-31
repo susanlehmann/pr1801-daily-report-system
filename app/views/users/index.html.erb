@@ -30,7 +30,7 @@
       <tr>
           <th scope="row"><%= user.id %></th>
           <td><%= image_tag user.avatars, class: "thumbnail change_size_image" %></td>
-          <td><%= user.name %></td>
+          <td><%= link_to user.name, user %></td>
           <td><%= user.followers.all.size %></td>
           <td><%= user.following.all.size %></td>
       </tr>

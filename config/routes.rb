@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'messages/index'
+
+  get 'conversations/index'
+
   scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
     get "/signup", to: "users#new"
     root "static_pages#home"
@@ -12,6 +16,9 @@ Rails.application.routes.draw do
         patch :approve
         patch :reject
       end
+    end
+    resources :conversations, only: [:index, :create] do
+      resources :messages, only: [:index, :create]
     end
     resources :requests do
       member do
