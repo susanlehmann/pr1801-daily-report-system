@@ -4,7 +4,7 @@
     <%= f.label t(:name) %><br>
     <%= f.text_field :name %><br>
     <%= f.label t(:manager_id) %><br>
-    <%= f.text_field :manager_id %><br>
+    <%= f.select :manager_id, User.all.collect { |p| [ p.name, p.id ] }, include_blank: "--All--" %><br>
     <%= f.submit t("Create_division"), class: "btn btn-primary bt1" %>
   <% end %>
 </div>

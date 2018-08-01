@@ -4,6 +4,7 @@ class UserSkillsController < ApplicationController
 
   def index
     @user_skills = UserSkill.all
+    @user_skill_store = {}
   end
 
   def new

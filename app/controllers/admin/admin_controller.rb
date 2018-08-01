@@ -2,8 +2,7 @@ class Admin::AdminController < ApplicationController
   layout "admin"
   before_action :authorized?
 
-  def index
-  end
+  def index;end
 
   private
   def authorized?

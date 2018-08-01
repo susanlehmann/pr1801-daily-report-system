@@ -46,13 +46,13 @@
             <i class="fa fa-fw fa-institution"></i>
           </div>
           <div class="mr-5"><%= Position.all.size %></div>
+        </div>
           <%= link_to admin_positions_path,class: "card-footer text-white clearfix small z-1" do %><%= t("all_positions") %>
             <span class="float-left"></span>
             <span class="float-right">
               <i class="fa fa-angle-right"></i>
             </span>
           <% end %>
-        </div>
       </div>
     </div>
     <div class="col-xl-3 col-sm-6 mb-3">
@@ -69,6 +69,14 @@
             </span>
           <% end %>
         </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header text-center">
+        <%= t("skill_chart") %>
+      </div>
+      <div class="card-content">
+        <%= pie_chart UserSkill.all.group(:skill_id).all.size %>
       </div>
     </div>
   </div>

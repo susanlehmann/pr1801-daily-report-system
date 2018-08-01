@@ -17,6 +17,8 @@
 //= require bootstrap
 //= require bootstrap-datetimepicker
 //= require turbolinks
+//= require Chart.bundle
+//= require chartkick
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
